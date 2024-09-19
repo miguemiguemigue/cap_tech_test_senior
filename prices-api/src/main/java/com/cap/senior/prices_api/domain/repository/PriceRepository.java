@@ -8,8 +8,11 @@ import java.time.LocalDateTime;
 public interface PriceRepository {
 
     /**
-     * Get prices which start and end dates applied for the given date, product id and brand id.
-     * There could be more than one, since priority is used in case of collision
+     * Get prices that match the following conditions:
+     * - Price start date is greater than or equal to search date
+     * - Price end date is less than or equal to search date
+     * - Price product id matches
+     * - Price brand id matches
      *
      * @param date
      * @param productId
