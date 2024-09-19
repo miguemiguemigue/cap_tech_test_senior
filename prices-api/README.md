@@ -6,7 +6,7 @@ The Price API allows querying the price of a product for a specific brand and da
 
 ## Endpoints
 
-### `GET /api/prices`
+### `GET /prices`
 
 **Description**: Get price details for a product and brand on a specific date.
 
@@ -39,4 +39,4 @@ The Price API allows querying the price of a product for a specific brand and da
 
 ## Running the Application
 
-- **Build and Run**: Follow your project’s instructions to build and start the application.
+- **Build and Run**: Run PricesApiApplication.java
