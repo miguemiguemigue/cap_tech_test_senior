@@ -109,6 +109,8 @@
 								<apiPackage>${project.groupId}.prices-api.adapter.in.rest.controller</apiPackage>
 								<modelPackage>${project.groupId}.prices-api.adapter.in.rest.dto</modelPackage>
 								<useResponseEntity>false</useResponseEntity>
+								<dateLibrary>java8-localdatetime</dateLibrary>
+								<useLocalDateTime>true</useLocalDateTime>
 							</configOptions>
 						</configuration>
 					</execution>
