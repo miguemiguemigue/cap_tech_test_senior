@@ -1,5 +1,6 @@
 package com.cap.senior.prices_api.adapter.out.database.mongo.entity;
 
+import com.cap.senior.prices_api.adapter.out.database.mongo.config.MongoConfig;
 import com.cap.senior.prices_api.domain.model.Price;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Document(collection = "Price")
+@Document(collection = MongoConfig.PRICE_COLLECTION_NAME)
 @Data
 @AllArgsConstructor
 @Builder(toBuilder = true)
