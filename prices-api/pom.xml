@@ -58,6 +58,10 @@
 			<artifactId>jackson-databind-nullable</artifactId>
 			<version>0.2.6</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
 		<!-- Mongock -->
 		<dependency>
 			<groupId>io.mongock</groupId>
@@ -158,7 +162,7 @@
 								<library>spring-boot</library>
 								<apiPackage>${project.groupId}.prices-api.adapter.in.rest.controller</apiPackage>
 								<modelPackage>${project.groupId}.prices-api.adapter.in.rest.dto</modelPackage>
-								<useResponseEntity>false</useResponseEntity>
+								<useResponseEntity>true</useResponseEntity>
 								<dateLibrary>java8-localdatetime</dateLibrary>
 								<useLocalDateTime>true</useLocalDateTime>
 							</configOptions>

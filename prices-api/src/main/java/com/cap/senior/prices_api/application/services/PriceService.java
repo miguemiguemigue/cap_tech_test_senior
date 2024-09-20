@@ -33,8 +33,10 @@ public class PriceService {
             return Mono.error(new IllegalArgumentException("BrandId must be non-null and positive"));
         }
 
+        // find prices, getting the top priority one
         return getPriceUseCase.getPriceByDateProductAndBrand(date, productId, brandId)
                 .reduce((price1, price2) ->
+                        // delegate domain logic
                         price1.hasHigherPriorityThan(price2) ? price1 : price2
                 )
                 .flatMap(price -> price != null ? Mono.just(price) : Mono.empty());

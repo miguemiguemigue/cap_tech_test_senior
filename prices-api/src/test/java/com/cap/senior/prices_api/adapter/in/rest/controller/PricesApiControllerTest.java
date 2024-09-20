@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
@@ -216,31 +215,5 @@ class PricesApiControllerTest {
 
         verify(priceService, never()).findByDateProductAndBrand(any(), eq(productId), eq(brandId));
     }
-
-//    @Test
-//    void getPrices_Given_non_existent_price_Then_return_not_found() {
-//        // Given:
-//        LocalDateTime date = LocalDateTime.now();
-//        Long productId = 1L;
-//        Long brandId = 1L;
-//
-//        // No price was found
-//        when(priceService.findByDateProductAndBrand(date, productId, brandId)).thenReturn(Mono.empty());
-//
-//        // When:
-//        client.get()
-//                .uri(uriBuilder -> uriBuilder
-//                        .path("/api/prices")
-//                        .queryParam("date", date.toString())
-//                        .queryParam("product_id", productId)
-//                        .queryParam("brand_id", brandId)
-//                        .build())
-//                .exchange()
-//
-//                // Then:
-//                .expectStatus().isNotFound();
-//
-//        verify(priceService).findByDateProductAndBrand(eq(date), eq(productId), eq(brandId));
-//    }
 
 }
