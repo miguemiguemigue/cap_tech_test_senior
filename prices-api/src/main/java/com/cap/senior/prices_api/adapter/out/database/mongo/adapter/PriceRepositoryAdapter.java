@@ -3,7 +3,7 @@ package com.cap.senior.prices_api.adapter.out.database.mongo.adapter;
 import com.cap.senior.prices_api.adapter.out.database.mongo.entity.PriceEntity;
 import com.cap.senior.prices_api.adapter.out.database.mongo.repository.ReactiveMongoPriceRepository;
 import com.cap.senior.prices_api.domain.model.Price;
-import com.cap.senior.prices_api.domain.repository.PriceRepository;
+import com.cap.senior.prices_api.domain.ports.out.PriceRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
-public class PriceRepositoryAdapter implements PriceRepository {
+public class PriceRepositoryAdapter implements PriceRepositoryPort {
 
     private final ReactiveMongoPriceRepository reactiveMongoPersonRepository;
 

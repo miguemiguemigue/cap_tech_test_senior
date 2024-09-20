@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
-class PriceRepositoryAdapterTest extends AbstractBaseMongoIntegrationTest {
+class PriceRepositoryPortAdapterTest extends AbstractBaseMongoIntegrationTest {
 
     @Autowired
     private ReactiveMongoPriceRepository reactiveMongoPriceRepository;
@@ -79,7 +79,7 @@ class PriceRepositoryAdapterTest extends AbstractBaseMongoIntegrationTest {
         // Then:
         StepVerifier.create(result)
                 .expectNextMatches(
-                        price -> price.getPrice().equals(testPrice) &&
+                        price -> price.getPriceAmount().equals(testPrice) &&
                                 price.getBrandId().equals(testBrandId) &&
                                 price.getProductId().equals(testProductId)
                 )
@@ -137,7 +137,7 @@ class PriceRepositoryAdapterTest extends AbstractBaseMongoIntegrationTest {
         // Then:
         StepVerifier.create(result)
                 .expectNextMatches(
-                        price -> price.getPrice().equals(testPrice) &&
+                        price -> price.getPriceAmount().equals(testPrice) &&
                                 price.getBrandId().equals(testBrandId) &&
                                 price.getProductId().equals(testProductId)
                 )
@@ -195,7 +195,7 @@ class PriceRepositoryAdapterTest extends AbstractBaseMongoIntegrationTest {
         // Then:
         StepVerifier.create(result)
                 .expectNextMatches(
-                        price -> price.getPrice().equals(testPrice) &&
+                        price -> price.getPriceAmount().equals(testPrice) &&
                                 price.getBrandId().equals(testBrandId) &&
                                 price.getProductId().equals(testProductId)
                 )
@@ -231,7 +231,7 @@ class PriceRepositoryAdapterTest extends AbstractBaseMongoIntegrationTest {
         // Then:
         StepVerifier.create(result)
                 .expectNextMatches(
-                        price -> price.getPrice().equals(testPrice) &&
+                        price -> price.getPriceAmount().equals(testPrice) &&
                                 price.getBrandId().equals(testBrandId) &&
                                 price.getProductId().equals(testProductId)
                 )
@@ -303,7 +303,7 @@ class PriceRepositoryAdapterTest extends AbstractBaseMongoIntegrationTest {
         // Then:
         StepVerifier.create(result)
                 .expectNextMatches(
-                        price -> price.getPrice().equals(testPrice) &&
+                        price -> price.getPriceAmount().equals(testPrice) &&
                                 price.getBrandId().equals(testBrandId) &&
                                 price.getProductId().equals(testProductId)
                 )

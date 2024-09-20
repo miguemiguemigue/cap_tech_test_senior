@@ -24,7 +24,7 @@ public class Price {
      * priority is used to define which Price is used, in case of date collision. Choose the higher one.
      */
     private int priority;
-    private BigDecimal price;
+    private BigDecimal priceAmount;
     private String currency;
 
     /**

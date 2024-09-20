@@ -1,11 +1,11 @@
-package com.cap.senior.prices_api.domain.repository;
+package com.cap.senior.prices_api.domain.ports.out;
 
 import com.cap.senior.prices_api.domain.model.Price;
 import reactor.core.publisher.Flux;
 
 import java.time.LocalDateTime;
 
-public interface PriceRepository {
+public interface PriceRepositoryPort {
 
     /**
      * Get prices that match the following conditions:

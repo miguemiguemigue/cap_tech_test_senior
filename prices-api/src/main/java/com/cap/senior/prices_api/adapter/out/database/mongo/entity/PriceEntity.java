@@ -45,7 +45,7 @@ public class PriceEntity {
                 .startDate(priceEntity.getStartDate())
                 .endDate(priceEntity.getEndDate())
                 .priority(priceEntity.getPriority())
-                .price(priceEntity.getPrice())
+                .priceAmount(priceEntity.getPrice())
                 .currency(priceEntity.getCurrency())
                 .build();
     }
