@@ -1,6 +1,7 @@
 package com.cap.senior.prices_api.adapter.out.database.mongo.adapter;
 
 import com.cap.senior.prices_api.adapter.out.database.mongo.entity.PriceEntity;
+import com.cap.senior.prices_api.adapter.out.database.mongo.exception.MongoConnectionException;
 import com.cap.senior.prices_api.adapter.out.database.mongo.repository.ReactiveMongoPriceRepository;
 import com.cap.senior.prices_api.domain.model.Price;
 import com.cap.senior.prices_api.domain.ports.out.PriceRepositoryPort;
@@ -24,6 +25,7 @@ public class PriceRepositoryAdapter implements PriceRepositoryPort {
          */
         return reactiveMongoPersonRepository.
                 findByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(brandId, productId, date, date)
-                .map(PriceEntity::toDomain);
+                .map(PriceEntity::toDomain)
+                .onErrorMap(ex -> new MongoConnectionException("Failed to connect to the database", ex));
     }
 }
