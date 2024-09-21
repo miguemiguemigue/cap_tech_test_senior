@@ -1,0 +1,942 @@
+{
+	"info": {
+		"_postman_id": "0a7c709b-92d4-4b6e-b10d-442c4d97ef26",
+		"name": "Price API",
+		"description": "API to check product prices for a brand in a given period",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3215806"
+	},
+	"item": [
+		{
+			"name": "1. Test getPrice invalid date error",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/prices?date=2024-09-20T16:46:33&product_id=1&brand_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prices"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-09-20T16:46:33",
+							"description": "(Required) Date and time to check the price."
+						},
+						{
+							"key": "product_id",
+							"value": "1",
+							"description": "(Required) Product identifier."
+						},
+						{
+							"key": "brand_id",
+							"value": "1",
+							"description": "(Required) Brand identifier."
+						}
+					]
+				},
+				"description": "Get the price list related to a product, brand, and a given time"
+			},
+			"response": [
+				{
+					"name": "Product price found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"product_id\": \"<long>\",\n  \"brand_id\": \"<long>\",\n  \"price_list\": \"<long>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"price\": \"<float>\",\n  \"curr\": \"<string>\"\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Price information not found for the provided parameters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "2. Test getPrice invalid product_id error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/prices?date=2024-09-20T16:46:33&product_id=1&brand_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prices"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-09-20T16:46:33",
+							"description": "(Required) Date and time to check the price."
+						},
+						{
+							"key": "product_id",
+							"value": "1",
+							"description": "(Required) Product identifier."
+						},
+						{
+							"key": "brand_id",
+							"value": "1",
+							"description": "(Required) Brand identifier."
+						}
+					]
+				},
+				"description": "Get the price list related to a product, brand, and a given time"
+			},
+			"response": [
+				{
+					"name": "Product price found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"product_id\": \"<long>\",\n  \"brand_id\": \"<long>\",\n  \"price_list\": \"<long>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"price\": \"<float>\",\n  \"curr\": \"<string>\"\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Price information not found for the provided parameters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "3. Test getPrice invalid brand_id error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/prices?date=2024-09-20T16:46:33&product_id=1&brand_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prices"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-09-20T16:46:33",
+							"description": "(Required) Date and time to check the price."
+						},
+						{
+							"key": "product_id",
+							"value": "1",
+							"description": "(Required) Product identifier."
+						},
+						{
+							"key": "brand_id",
+							"value": "1",
+							"description": "(Required) Brand identifier."
+						}
+					]
+				},
+				"description": "Get the price list related to a product, brand, and a given time"
+			},
+			"response": [
+				{
+					"name": "Product price found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"product_id\": \"<long>\",\n  \"brand_id\": \"<long>\",\n  \"price_list\": \"<long>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"price\": \"<float>\",\n  \"curr\": \"<string>\"\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Price information not found for the provided parameters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "4. Test getPrice not found",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/prices?date=2024-09-20T16:46:33&product_id=1&brand_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prices"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-09-20T16:46:33",
+							"description": "(Required) Date and time to check the price."
+						},
+						{
+							"key": "product_id",
+							"value": "1",
+							"description": "(Required) Product identifier."
+						},
+						{
+							"key": "brand_id",
+							"value": "1",
+							"description": "(Required) Brand identifier."
+						}
+					]
+				},
+				"description": "Get the price list related to a product, brand, and a given time"
+			},
+			"response": [
+				{
+					"name": "Product price found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"product_id\": \"<long>\",\n  \"brand_id\": \"<long>\",\n  \"price_list\": \"<long>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"price\": \"<float>\",\n  \"curr\": \"<string>\"\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Price information not found for the provided parameters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "5. Get getPrice with max priority",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test to check if the status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Test to check if the response body matches the expected JSON\r",
+							"pm.test(\"Response body is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    // Expected values\r",
+							"    var expectedResponse = {\r",
+							"        \"product_id\": 1,\r",
+							"        \"brand_id\": 1,\r",
+							"        \"price_list\": 1,\r",
+							"        \"start_date\": \"2018-06-14T12:00:00\",\r",
+							"        \"end_date\": \"2018-10-14T17:00:00\",\r",
+							"        // this is the price of the top priority price\r",
+							"        \"price\": 40.0,\r",
+							"        \"curr\": \"EUR\"\r",
+							"    };\r",
+							"\r",
+							"    // Check if the response matches the expected values\r",
+							"    pm.expect(jsonData).to.deep.equal(expectedResponse);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/prices?date=2018-06-16T00:00:00&product_id=1&brand_id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prices"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2018-06-16T00:00:00",
+							"description": "(Required) Date and time to check the price."
+						},
+						{
+							"key": "product_id",
+							"value": "1",
+							"description": "(Required) Product identifier."
+						},
+						{
+							"key": "brand_id",
+							"value": "1",
+							"description": "(Required) Brand identifier."
+						}
+					]
+				},
+				"description": "Get the price list related to a product, brand, and a given time"
+			},
+			"response": [
+				{
+					"name": "Product price found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"product_id\": \"<long>\",\n  \"brand_id\": \"<long>\",\n  \"price_list\": \"<long>\",\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"price\": \"<float>\",\n  \"curr\": \"<string>\"\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Price information not found for the provided parameters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?date=<dateTime>&product_id=<long>&brand_id=<long>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "<dateTime>",
+									"description": "(Required) Date and time to check the price."
+								},
+								{
+									"key": "product_id",
+									"value": "<long>",
+									"description": "(Required) Product identifier."
+								},
+								{
+									"key": "brand_id",
+									"value": "<long>",
+									"description": "(Required) Brand identifier."
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:8080/api"
+		}
+	]
+}

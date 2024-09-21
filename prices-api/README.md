@@ -11,8 +11,8 @@ The Price API allows querying the price of a product for a specific brand and da
 * OpenAPI yml integration to define API endpoint
 * Hexagonal architecture
 * Tests
-    * Unit tests
-    * Persistence and integration tests using TestContainers for MongoDB
+  * Unit tests
+  * Persistence and integration tests using TestContainers for MongoDB
 * Mongock for MongoDB evolution control
 
 ## Requirements
@@ -85,10 +85,10 @@ A variety of prices are inserted in MongoDB by Mongock to test the API
 
 ### 7. Postman collection test
 
-Integration and persistence tests are already providing confidence about the API behaviour, but you can import 
+Integration and persistence tests are already providing confidence about the API behaviour, but you can import
 a postman collection that contains tests, and reuse it to call the API the way you need.
 
-Import /postman/Price API.postman_collection.json to Postman.
+Import ../postman/Price API.postman_collection.json to Postman.
 
 Run collection to pass tests.
 
