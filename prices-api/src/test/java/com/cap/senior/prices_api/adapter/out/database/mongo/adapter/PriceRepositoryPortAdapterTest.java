@@ -4,15 +4,17 @@ import com.cap.senior.prices_api.adapter.out.database.mongo.adapter.testcontaine
 import com.cap.senior.prices_api.adapter.out.database.mongo.entity.PriceEntity;
 import com.cap.senior.prices_api.adapter.out.database.mongo.repository.ReactiveMongoPriceRepository;
 import com.cap.senior.prices_api.domain.model.Price;
+import com.mongodb.reactivestreams.client.MongoClient;
+import io.mongock.runner.springboot.base.MongockInitializingBeanRunner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 
 class PriceRepositoryPortAdapterTest extends AbstractBaseMongoIntegrationTest {
 
@@ -21,6 +23,9 @@ class PriceRepositoryPortAdapterTest extends AbstractBaseMongoIntegrationTest {
 
     @Autowired
     private PriceRepositoryAdapter priceRepositoryAdapter;
+
+    @MockBean
+    private MongockInitializingBeanRunner getBuilder;
 
     @BeforeEach
     void setUp() {
