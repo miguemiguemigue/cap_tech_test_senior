@@ -2,7 +2,12 @@
 
 ## Description
 
-The Price API allows querying the price of a product for a specific brand and date.
+* The Price API allows querying the price of a product for a specific brand and date.
+* Prices are stored in a MongoDB database
+* Several prices could apply to a date, product and brand
+  * Price API will find the price with top priority
+    * Priority logic is implemented in the Domain Price model
+
 
 ## Main features
 * Spring boot 3
@@ -11,8 +16,8 @@ The Price API allows querying the price of a product for a specific brand and da
 * OpenAPI yml integration to define API endpoint
 * Hexagonal architecture
 * Tests
-    * Unit tests
-    * Persistence and integration tests using TestContainers for MongoDB
+  * Unit tests
+  * Persistence and integration tests using TestContainers for MongoDB
 * Mongock for MongoDB evolution control
 
 ## Requirements
@@ -20,6 +25,7 @@ The Price API allows querying the price of a product for a specific brand and da
 - JDK 17
 - Maven 3.8.X
 - Docker (for MongoDB)
+
 
 ## Steps to test it
 ### 1. Clone the Repository
@@ -85,7 +91,7 @@ A variety of prices are inserted in MongoDB by Mongock to test the API
 
 ### 7. Postman collection test
 
-Integration and persistence tests are already providing confidence about the API behaviour, but you can import 
+Integration and persistence tests are already providing confidence about the API behaviour, but you can import
 a postman collection that contains tests, and reuse it to call the API the way you need.
 
 Import /postman/Price API.postman_collection.json to Postman.
