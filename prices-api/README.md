@@ -63,9 +63,41 @@ Once the MongoDB container is running, you can start the application with the fo
 mvn spring-boot:run
 ```
 
-Mongock will populate the database with prices of all kind
+### 6. Mongock populates the database with prices of all kind
 
+A variety of prices are inserted in MongoDB by Mongock to test the API
 
+| ID  | Product ID | Brand ID | Price List ID | Start Date           | End Date             | Priority | Price  | Currency |
+|-----|------------|----------|---------------|----------------------|----------------------|----------|--------|----------|
+| 1   | 1          | 1        | 1             | 2018-06-14T00:00:00  | 2018-12-31T23:59:59  | 1        | 35.50  | EUR      |
+| 2   | 1          | 1        | 1             | 2018-06-14T10:00:00  | 2018-10-14T15:00:00  | 2        | 40.00  | EUR      |
+| 3   | 2          | 2        | 3             | 2019-06-14T00:00:00  | 2019-07-14T23:59:59  | 1        | 25.75  | EUR      |
+| 4   | 4          | 2        | 4             | 2019-07-01T00:00:00  | 2019-12-31T23:59:59  | 2        | 28.50  | EUR      |
+| 5   | 13         | 10       | 5             | 2020-08-01T00:00:00  | 2020-08-31T23:59:59  | 1        | 50.00  | EUR      |
+| 6   | 13         | 11       | 6             | 2020-08-15T00:00:00  | 2020-09-15T23:59:59  | 1        | 52.00  | EUR      |
+| 7   | 5          | 3        | 9             | 2021-09-01T00:00:00  | 2021-09-30T23:59:59  | 1        | 70.00  | EUR      |
+| 8   | 6          | 3        | 10            | 2021-10-01T00:00:00  | 2021-12-31T23:59:59  | 1        | 75.00  | EUR      |
+
+* Price 1 and 2: Dates overlap, same product and brand, different priority
+* Price 3 and 4: Dates overlap, same brand and different product
+* Price 5 and 6: Dates overlap, same product and different brand
+* Price 7 and 8: Dates do not overlap, different product and brand
+
+### 7. Postman collection test
+
+Integration and persistence tests are already providing confidence about the API behaviour, but you can import
+a postman collection that contains tests, and reuse it to call the API the way you need.
+
+Import ../postman/Price API.postman_collection.json to Postman.
+
+Run collection to pass tests.
+
+Create new request to test whatever you need.
+
+#### Tests of the Postman collection
+* Check 400 BAD REQUEST for invalid parameters
+* Check 404 NOT FOUND for not found price
+* Check 200 OK, obtaining the price with top priority (Price 2 of the Mongock populated data)
 
 ## Endpoints
 
