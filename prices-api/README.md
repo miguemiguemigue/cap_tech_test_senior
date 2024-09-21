@@ -28,7 +28,7 @@ First, clone the repository using the following command:
 
 ```bash
 git clone https://github.com/miguemiguemigue/cap_tech_test_senior.git
-cd cap_tech_test_senior
+cd cap_tech_test_senior/prices-api
 ```
 
 ### 2. Compile the project
