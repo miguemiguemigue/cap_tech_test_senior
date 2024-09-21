@@ -3,16 +3,12 @@ package com.cap.senior.prices_api.adapter.in.rest.exception;
 
 import com.cap.senior.prices_api.domain.exception.ServiceUnavailableException;
 import jakarta.validation.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.ErrorResponseException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.server.ServerErrorException;
 import org.springframework.web.server.ServerWebExchange;
 
 import java.time.LocalDateTime;
@@ -45,12 +41,25 @@ public class GlobalExceptionHandler {
         return errors;
     }
 
+    /**
+     * Handle unavailable services
+     *
+     * @param ex
+     * @return
+     */
     @ExceptionHandler(ServiceUnavailableException.class)
     public ResponseEntity<SimpleErrorResponse> handleServiceUnavailable(ServiceUnavailableException ex) {
         SimpleErrorResponse errorResponse = SimpleErrorResponse.serviceUnavailable();
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(errorResponse);
     }
 
+    /**
+     * Handle parameter validations
+     *
+     * @param ex
+     * @param exchange
+     * @return
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(IllegalArgumentException ex, ServerWebExchange exchange) {
         Map<String, Object> error = new HashMap<>();

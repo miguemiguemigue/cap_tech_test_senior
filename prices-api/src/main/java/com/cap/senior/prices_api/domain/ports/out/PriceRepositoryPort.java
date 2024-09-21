@@ -13,7 +13,6 @@ public interface PriceRepositoryPort {
      * - Price end date is less than or equal to search date
      * - Price product id matches
      * - Price brand id matches
-     *
      * @param date
      * @param productId
      * @param brandId

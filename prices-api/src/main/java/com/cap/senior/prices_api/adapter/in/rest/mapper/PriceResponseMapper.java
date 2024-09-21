@@ -2,7 +2,6 @@ package com.cap.senior.prices_api.adapter.in.rest.mapper;
 
 import com.cap.senior.prices_api.adapter.in.rest.dto.PriceResponse;
 import com.cap.senior.prices_api.domain.model.Price;
-import org.springframework.stereotype.Component;
 
 public class PriceResponseMapper {
 

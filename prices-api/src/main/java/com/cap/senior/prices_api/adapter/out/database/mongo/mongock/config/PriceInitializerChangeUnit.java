@@ -122,7 +122,6 @@ public class PriceInitializerChangeUnit {
                         .price(BigDecimal.valueOf(28.50))
                         .currency("EUR")
                         .build(),
-
                 // Dates overlap, same product and different brand
                 PriceEntity.builder()
                         .id("5")
